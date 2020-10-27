@@ -11,14 +11,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
-@Configuration  // Necesario para que funcione el método encoder()
+@Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
 
-	@Bean // Soy yo el que crea el objeto. Se inyecta en RegistrationController
+	@Bean
 	public PasswordEncoder encoder() {
 		return new StandardPasswordEncoder("53cr3t");
 	}
@@ -41,8 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			;
 		
 			// Active h2-console
-//			http.csrf().disable();
-//			http.headers().frameOptions().disable();
+			http.csrf().disable();
+			http.headers().frameOptions().disable();
 	}
 
 	@Override
